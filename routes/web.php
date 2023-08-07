@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Admin;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/register',[AdminController::class, 'index']);
+Route::post('/register',[AdminController::class,'store']);
+
+Route::get('/category', [CategoryController::class,'index']);
+Route::post('/category', [CategoryController::class,'store']);
+
+Route::view('/post', 'admin.post');
